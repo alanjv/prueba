@@ -3,35 +3,21 @@
         <div class="col-lg-8 offset-lg-2">
             <div class="card">
                 <div class="card-body text-center">
-                    <span >BIENVENIDO</span>
-                    <button class="btn btn-secondary float-end">Contacto</button>
+                    <span class="titulo" >CONTACTOS</span>
+                    <button class="btn btn-secondary float-end"  routerLink="/contacto">Nuevo</button>
                     <table class="table table-striped mt-3">
                         <thead>
                             <tr>
-                            <th scope="col">#</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Correo</th>
-                            <th scope="col">Telefono</th>
+                            <th scope="col">Teléfono</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>mdo</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>fat</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">3</th>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>social</td>
+                            <tr *ngFor="let contacto of contactos">
+                            <td>{{contacto.nombre}}</td>
+                            <td>{{contacto.email}}</td>
+                            <td>{{contacto.telefono}}</td>
                             </tr>
                         </tbody>
                         </table>
