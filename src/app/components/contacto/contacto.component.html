@@ -20,9 +20,10 @@
                             </div>
                         </div>
                         <div class="mb-3">        
-                            <input type="text"  pattern="^\+?[0-9\-]{8,15}$" maxlength="13" placeholder="Telefono" class="form-control" formControlName="telefono">
-                            <div class="text-danger" *ngIf="contactoForm.get('telefono')?.hasError('minlength') && contactoForm.get('telefono')?.touched " >
-                                <span>La longitud del telefono debe ser 13.</span>
+                            <input type="text"  pattern="^\+?[0-9\-]{8,15}$" maxlength="14" placeholder="Telefono" class="form-control" formControlName="telefono">
+                            <div class="text-danger"  >
+                                <span *ngIf="contactoForm.get('telefono')?.hasError('minlength') && contactoForm.get('telefono')?.touched ">La longitud del telefono debe ser 13.</span>
+                                 <span *ngIf="contactoForm.get('telefono')?.hasError('pattern') && contactoForm.get('telefono')?.touched ">Formato no válido.</span>
                             </div>
                         </div>
                         <div class="mb-3">                      

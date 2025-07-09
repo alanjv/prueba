@@ -25,7 +25,7 @@ export class ContactoComponent {
     this.contactoForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
-      telefono: ['',  [Validators.minLength(13)]],
+      telefono: ['',  [Validators.minLength(13), Validators.pattern(/^\+504\d{4}-\d{4}$/)]], //Formato +5049619-1250
       mensaje: ['', [Validators.required, Validators.minLength(50)]],
       terminos: ['', [Validators.required]],
     })
