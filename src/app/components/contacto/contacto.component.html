@@ -1,1 +1,53 @@
-<p>contacto works!</p>
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">Formulario de contacto</span>
+                    <form class="mt-3" [formGroup]="contactoForm" (ngSubmit)="enviarContacto()">
+                        <div class="mb-3">                      
+                            <input type="text" placeholder="Nombre completo" class="form-control" formControlName="nombre" aria-describedby="emailHelp">
+                            <div class="text-danger" >
+                                <span *ngIf="contactoForm.get('nombre')?.hasError('required') && contactoForm.get('nombre')?.touched ">El nombre es obligatorio.</span>
+                                <span *ngIf="contactoForm.get('nombre')?.hasError('minlength') && contactoForm.get('nombre')?.touched ">El nombre debe ser mayor a 3 carácteres.</span>
+                            </div>
+                        </div>
+                        <div class="mb-3">                      
+                            <input type="email" placeholder="Email" class="form-control" formControlName="email" aria-describedby="emailHelp">
+                            <div class="text-danger" >
+                                <span *ngIf="contactoForm.get('email')?.hasError('required') && contactoForm.get('email')?.touched ">El correo es obligatorio.</span>
+                                <span *ngIf="contactoForm.get('email')?.hasError('email') && contactoForm.get('email')?.touched  ">El formato no es válido.</span>
+                            </div>
+                        </div>
+                        <div class="mb-3">        
+                            <input type="text" pattern="[0-9]*" maxlength="13" placeholder="Telefono" class="form-control" formControlName="telefono">
+                            <div class="text-danger" *ngIf="contactoForm.get('telefono')?.hasError('minlength') && contactoForm.get('telefono')?.touched " >
+                                <span>La longitud del telefono debe ser 13.</span>
+                            </div>
+                        </div>
+                        <div class="mb-3">                      
+                            <textarea class="form-control" placeholder="Mensaje" formControlName="mensaje"></textarea>
+                           <div class="text-danger" >
+                                <span *ngIf="contactoForm.get('mensaje')?.hasError('required') && contactoForm.get('mensaje')?.touched ">El mensaje es obligatorio.</span>
+                                <span *ngIf="contactoForm.get('mensaje')?.hasError('minlength') && contactoForm.get('mensaje')?.touched  ">El mensaje debe de ser de 50 carácteres mínimo.</span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="checkbox" class="form-check-input" formControlName="terminos">
+                            <label class="form-check-label" >Aceptar términos.</label>
+                            <div class="text-danger" *ngIf="contactoForm.get('terminos')?.hasError('required') && contactoForm.get('terminos')?.touched " >
+                                <span>Debe aceptar los términos.</span>
+                            </div>
+                        </div>
+                        <div class="mb3">
+                             <button type="submit" routerLink="/" class="btn  float-start btn-secondary">VOLVER</button>
+                             <button type="submit" class="btn  float-end btn-primary">Enviar</button>
+
+                        </div>
+                       
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
