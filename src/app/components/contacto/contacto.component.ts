@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterLink } from '@angular/router';
 import { ContactoService } from '../../services/contacto.service';
 import { Contacto } from '../../models/contacto';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-contacto',
@@ -15,6 +16,7 @@ export class ContactoComponent {
   private fb = inject(FormBuilder)
   private _contacto = inject(ContactoService)
   private router = inject(Router)
+  private toast = inject(ToastrService)
   contactoForm: FormGroup;
 
 
@@ -42,8 +44,9 @@ export class ContactoComponent {
       terminos: this.contactoForm.get('terminos')?.value,
     }
 
-    this.router.navigate([''])
-    console.log(CONTACTO)
+    this._contacto.agregarContacto(CONTACTO);
+    this.toast.success('Contacto enviado con éxito!','Contacto enviado!');
+    this.router.navigate(['/'])
 
 
   }
